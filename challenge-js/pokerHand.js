@@ -23,14 +23,14 @@ class PokerHand {
       }
 
       let splitUpCards = hand.split(' ')
-      splitUpCards.forEach((card) => {
+        splitUpCards.forEach((card) => {
         card = card.split('')
         let suit = card[card.length-1]
         suits.push(suit)
         let cardValue;
         if (card.length === 2) {
           if (!Object.keys(faceCards).includes(card[0])) {
-          cardValue = card[0]
+            cardValue = card[0]
             cardValues.push(parseInt(cardValue))
           } else {
             cardValue = faceCards[(card[0])]
@@ -48,7 +48,6 @@ class PokerHand {
   }
 
     cardsCheck = (suits, cardValues) => {
-      console.log(this.hand)
       const isFlush = suits.every(suit => suit === suits[0])
 
       const isStraight = cardValues.every((cardValue, i) => {
@@ -64,7 +63,6 @@ class PokerHand {
 
       const hasPair = cardValues.reduce((acc, cardValue) => {
         const filteredCardValues = cardValues.filter(val => val === cardValue)
-        console.log(filteredCardValues)
         if (filteredCardValues.length === 2) {
           return true;
         } else {
@@ -91,8 +89,6 @@ class PokerHand {
       }
     }, false);
 
-
-
    const isRoyalFlush = "1,10,11,12,13"
 
    const hasTwoPair = () => {
@@ -107,31 +103,22 @@ class PokerHand {
    }
 
     if (cardValues.toString() == isRoyalFlush && isFlush) {
-        console.log("Royal Flush")
         this.state.rank = "Royal Flush";
     } else if (isFlush && isStraight) {
-        console.log("Straight Flush")
         this.state.rank = "Straight Flush";
     } else if (hasFourOfAKind) {
-        console.log("Four of a Kind")
          this.state.rank = "Four of a Kind";
     } else if (hasThreeOfAKind && hasPair) {
-        console.log("Full House")
          this.state.rank = "Full House";
     } else if (isFlush) {
-        console.log("Flush")
          this.state.rank = "Flush";
     } else if (isStraight) {
-        console.log("Straight")
          this.state.rank = "Straight";
     } else if (hasThreeOfAKind) {
-        console.log("Three of a Kind")
          this.state.rank = "Three of a Kind";
     } else if (hasTwoPair()) {
-        console.log("Two Pair")
          this.state.rank = "Two Pair";
     } else if (hasPair) {
-        console.log("One Pair")
         this.state.rank = "One Pair";
     } else {
         this.state.rank = "High Card";
