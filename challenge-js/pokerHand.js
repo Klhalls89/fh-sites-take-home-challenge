@@ -68,7 +68,7 @@ class PokerHand {
         } else {
           return acc;
         }
-      }, true);
+      }, false);
 
 
     const hasThreeOfAKind = cardValues.reduce((acc, cardValue) => {
